@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ha-nginx-pod-hooks
+  labels:
+    app: ha-ngnix-p-h
+spec:
+  containers:
+    - name: ha-nginx-c-1
+      image: nginx:1.10.1
+      ports:
+        - containerPort: 801
+      lifecycle:
+        postStart:
+          exec:
+            command:
+              [
+                "/bin/sh",
+                "-c",
+                "echo postStart is executing>/tmp/message-pre.txt",
+              ]
+        preStop:
+          exec:
+            command:
+              [
+                "/bin/sh",
+                "-c",
+                "echo preStop is executing>/tmp/message-post.txt",
+              ]
