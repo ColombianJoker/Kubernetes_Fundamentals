@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ha-statefulset
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      ktype: stateful-set
+  template:
+    metadata:
+      labels:
+        ktype: stateful-set
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: ha-statefulset-c-1
+          image: nginx:1.25
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: ha-www-v
+              mountPath: /opt/srv/nginx/slim/html
+  volumeClaimTemplates:
+    - metadata:
+        name: ha-www-v
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 100Mi
