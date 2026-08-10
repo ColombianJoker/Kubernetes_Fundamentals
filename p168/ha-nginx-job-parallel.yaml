@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: ha-nginx-job-parallel
+spec:
+  parallelism: 3
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: ha-nginx-job-parallel-c
+          image: nginx:1.10.1
+          command:
+            - "/bin/bash"
+            - "-c"
+            - "date; echo Hello from ha-nginx-job-parallel"
+  backoffLimit: 2
