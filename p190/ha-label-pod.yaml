@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ha-label-pod
+  labels:
+    apps.inodo.com.co/name: ha-frontend-app
+    apps.inodo.com.co/version: 23.22.05
+    apps.inodo.com.co/environment: test
+    apps.inodo.com.co/component-type: frontend-service
+    apps.inodo.com.co/deployment-type: rolling-update
+spec:
+  containers:
+  - name: ha-label-c
+    image: nginx:1.10.1
+    ports:
+      - containerPort: 8007
