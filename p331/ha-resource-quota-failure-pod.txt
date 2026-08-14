@@ -1,0 +1,2 @@
+Warning: spec.containers[0].resources.limits[memory]: fractional byte value "1181116006400m" is invalid, must be an integer
+Error from server (Forbidden): error when creating "ha-resource-quota-failure-pod.yaml": pods "ha-resource-quota-failure-pod" is forbidden: [maximum cpu usage per Container is 500m, but limit is 1100m, maximum memory usage per Container is 500Mi, but limit is 1181116006400m]

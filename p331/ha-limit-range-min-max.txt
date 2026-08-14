@@ -1,0 +1,6 @@
+Name:       ha-limit-range-min-max
+Namespace:  ha-namespace-n1
+Type        Resource  Min    Max    Default Request  Default Limit  Max Limit/Request Ratio
+----        --------  ---    ---    ---------------  -------------  -----------------------
+Container   memory    100Mi  500Mi  500Mi            500Mi          -
+Container   cpu       100m   500m   500m             500m           -
