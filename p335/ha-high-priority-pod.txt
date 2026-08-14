@@ -1,0 +1,63 @@
+Name:                 ha-high-priority-pod
+Namespace:            ha-namespace-n1
+Priority:             100
+Priority Class Name:  high-priority
+Service Account:      default
+Node:                 orbstack/192.168.139.2
+Start Time:           Fri, 14 Aug 2026 10:39:13 -0500
+Labels:               <none>
+Annotations:          kubernetes.io/limit-ranger:
+                        LimitRanger plugin set: cpu, memory request for container ha-high-priority-pod-c-1; cpu, memory limit for container ha-high-priority-pod-c...
+Status:               Running
+IP:                   192.168.194.4
+IPs:
+  IP:  192.168.194.4
+Resources:
+  Requests:
+    cpu:     500m
+    memory:  600Mi
+Containers:
+  ha-high-priority-pod-c-1:
+    Container ID:   docker://1cefd5cbc52f7ee08aa344bc5d34cb16956447c904a0bf6100da6d5a2762f211
+    Image:          nginx:1.10.1
+    Image ID:       docker-pullable://nginx@sha256:35779791c05d119df4fe476db8f47c0bee5943c83eba5656a15fc046db48178b
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Fri, 14 Aug 2026 10:39:14 -0500
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     500m
+      memory:  500Mi
+    Requests:
+      cpu:        500m
+      memory:     500Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-cv7c2 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-cv7c2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  65s   default-scheduler  Successfully assigned ha-namespace-n1/ha-high-priority-pod to orbstack
+  Normal  Pulled     65s   kubelet            Container image "nginx:1.10.1" already present on machine and can be accessed by the pod
+  Normal  Created    65s   kubelet            Container created
+  Normal  Started    65s   kubelet            Container started

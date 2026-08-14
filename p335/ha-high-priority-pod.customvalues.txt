@@ -1,0 +1,2 @@
+POD_NAME                PRIORITY_CLASS_NAME    PRIORITY_VALUE
+ha-high-priority-pod   high-priority          100
