@@ -1,0 +1,58 @@
+Name:             ha-nginx-no-requests-limits-pod
+Namespace:        ha-namespace-n1
+Priority:         0
+Service Account:  default
+Node:             orbstack/192.168.139.2
+Start Time:       Fri, 14 Aug 2026 10:22:29 -0500
+Labels:           <none>
+Annotations:      kubernetes.io/limit-ranger:
+                    LimitRanger plugin set: cpu, memory request for container ha-nginx-no-requests-limits-pod-c-1; cpu, memory limit for container ha-nginx-no...
+Status:           Running
+IP:               192.168.194.3
+IPs:
+  IP:  192.168.194.3
+Containers:
+  ha-nginx-no-requests-limits-pod-c-1:
+    Container ID:   docker://7f722343148982113fae8d052e83d9a2ad174b75db600b19fe26127504b2bb06
+    Image:          nginx:1.10.1
+    Image ID:       docker-pullable://nginx@sha256:35779791c05d119df4fe476db8f47c0bee5943c83eba5656a15fc046db48178b
+    Port:           80/TCP
+    Host Port:      0/TCP
+    State:          Running
+      Started:      Fri, 14 Aug 2026 10:22:29 -0500
+    Ready:          True
+    Restart Count:  0
+    Limits:
+      cpu:     800m
+      memory:  800Mi
+    Requests:
+      cpu:        600m
+      memory:     600Mi
+    Environment:  <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8vm7v (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True 
+  Initialized                 True 
+  Ready                       True 
+  ContainersReady             True 
+  PodScheduled                True 
+Volumes:
+  kube-api-access-8vm7v:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  55s   default-scheduler  Successfully assigned ha-namespace-n1/ha-nginx-no-requests-limits-pod to orbstack
+  Normal  Pulled     55s   kubelet            Container image "nginx:1.10.1" already present on machine and can be accessed by the pod
+  Normal  Created    55s   kubelet            Container created
+  Normal  Started    55s   kubelet            Container started
